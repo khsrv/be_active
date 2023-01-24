@@ -57,7 +57,7 @@ class FounderWidget extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  "Azimjonov Asliddind",
+                  "Azimjonov Asliddin",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -67,7 +67,7 @@ class FounderWidget extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  "(Be active founder)",
+                  "(be Active founder)",
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,

@@ -7,9 +7,6 @@ import 'package:be_active/widgets/cards/time_cards.dart';
 import 'package:be_active/widgets/main/founder_widget.dart';
 import 'package:be_active/widgets/modals/info_modal.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             },
-            title: 'Закметки',
+            title: 'Заметки',
           ),
         ),
       ),

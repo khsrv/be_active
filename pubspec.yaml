@@ -26,7 +26,8 @@ dependencies:
   flutter_local_notifications: ^9.7.0
   webview_flutter: ^3.0.4
   modal_bottom_sheet: ^2.1.2
-
+  mask_text_input_formatter: ^2.1.0
+  easy_mask: ^2.0.1
 
 dev_dependencies:
   flutter_test:

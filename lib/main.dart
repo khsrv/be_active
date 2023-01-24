@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:be_active/providers/home_provider.dart';
 import 'package:be_active/screens/home_screen.dart';
 import 'package:be_active/service/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await runZonedGuarded(
@@ -21,13 +23,18 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+          ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
+        ], 
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomeScreen(),
       ),
-      home: const HomeScreen(),
     );
   }
 }

@@ -16,11 +16,11 @@ void showFounderModal({
     builder: (context) => StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return SizedBox(
-          height: 500,
+          height: MediaQuery.of(context).size.width+57+64,
           child: Scaffold(
             backgroundColor: kWhiteColor,
             body: Padding(
-              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 32),
+              padding: const EdgeInsets.only(bottom: 32),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,14 +47,13 @@ void showFounderModal({
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Здесь будет информация о создателя приложения",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        children: [
+                          Image.asset(
+                            "assets/images/about_app.jpg",
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width,
+                            fit: BoxFit.fitWidth,
+                          )
                         ],
                       ),
                     ],
