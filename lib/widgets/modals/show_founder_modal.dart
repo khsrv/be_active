@@ -58,11 +58,14 @@ void showFounderModal({
                       ),
                     ],
                   ),
-                  GradientButton(
-                    title: 'Закрыть окно',
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GradientButton(
+                      title: 'Закрыть окно',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
                   )
                 ],
               ),

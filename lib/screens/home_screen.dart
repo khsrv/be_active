@@ -5,7 +5,7 @@ import 'package:be_active/screens/time_screen.dart';
 import 'package:be_active/widgets/button/gradient_button.dart';
 import 'package:be_active/widgets/cards/time_cards.dart';
 import 'package:be_active/widgets/main/founder_widget.dart';
-import 'package:be_active/widgets/modals/info_modal.dart';
+import 'package:be_active/widgets/modals/show_founder_modal.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {

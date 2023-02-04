@@ -6,6 +6,8 @@ import 'package:be_active/service/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   await runZonedGuarded(
@@ -25,9 +27,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-          ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
-        ], 
+        ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
+      ],
       child: MaterialApp(
+        supportedLocales: const [
+          Locale('ru', 'RU'), // English
+        ],
+        localizationsDelegates: const [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate
+        ],
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

@@ -85,8 +85,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(
               widget.title,
-              style: textStyleSe11We600.copyWith(
-                color: kBlack.withOpacity(0.5),
+              style: textStyleSe15We700.copyWith(
+                
               ),
             ),
           ),
@@ -119,17 +119,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
               contentPadding: widget.padding ??
                   const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
               hintText: widget.hintText,
-              hintStyle: textStyleSe16We600.copyWith(
-                  color: kBlack.withOpacity(0.5)),
+              hintStyle: textStyleSe12We700.copyWith(
+                  color: kBlack.withOpacity(0.4)),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: kBlack.withOpacity(0.1),
+                  color: kBlack.withOpacity(0.2),
                 ),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: kBlack.withOpacity(0.3),
+                  color: kBlack.withOpacity(0.4),
                 ),
                 borderRadius: BorderRadius.circular(16.0),
               ),
