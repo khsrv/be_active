@@ -71,7 +71,9 @@ void showCreateNewEventModal(
                               formKey: formKey,
                               formatters: const [],
                               hintText: 'Введите название...',
-                              validator: (value) {},
+                              validator: (value) {
+                                return null;
+                              },
                             ),
                             const SizedBox(
                               height: 32,

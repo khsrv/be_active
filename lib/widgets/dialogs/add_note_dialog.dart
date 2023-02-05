@@ -42,18 +42,12 @@ class _AddNotesDialogState extends State<AddNotesDialog> {
                 CustomTextField(
                   controller: widget.textEditingController,
                   formKey: nameKey,
-                  formatters: [],
+                  formatters: const [],
                   hintText: '',
-                  validator: (value) {},
+                  validator: (value) {
+                    return null;
+                  },
                 ),
-                // Text(
-                //   infoText,
-                //   textAlign: TextAlign.center,
-                //   style: const TextStyle(
-                //     fontSize: 14,
-                //     fontWeight: FontWeight.w400,
-                //   ),
-                // ),
                 const SizedBox(
                   height: 16,
                 ),

@@ -16,7 +16,7 @@ void showFounderModal({
     builder: (context) => StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return SizedBox(
-          height: MediaQuery.of(context).size.width+57+64,
+          height: MediaQuery.of(context).size.width+57+100,
           child: Scaffold(
             backgroundColor: kWhiteColor,
             body: Padding(

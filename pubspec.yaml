@@ -30,6 +30,7 @@ dependencies:
   easy_mask: ^2.0.1
   flutter_localization: ^0.1.10
   easy_localization: ^3.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

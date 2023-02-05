@@ -1,7 +1,5 @@
 import 'package:be_active/core/themes/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class FounderWidget extends StatelessWidget {
   const FounderWidget({super.key});

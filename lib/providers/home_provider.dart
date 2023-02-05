@@ -5,12 +5,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class HomeProvider extends ChangeNotifier {
   HomeProvider() {
     getClockList();
+    getListOfNotes();
   }
-  List<ClockModel> listOfClocks = [];
+  List<ClockModel> morningClock = [];
+  List<ClockModel> dayClock = [];
+  List<ClockModel> eveningClock = [];
   List<String> listOfNotes = [];
 
   Future<void> getClockList() async {
-    listOfClocks.addAll(
+    morningClock.addAll(
       [
         ClockModel(12, "09:30", "Университет"),
         ClockModel(12, "02:30", "Cпортзал"),

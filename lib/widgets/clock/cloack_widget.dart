@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:be_active/core/themes/colors.dart';
 import 'package:be_active/models/clock_model.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:be_active/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +37,7 @@ class NoteWidget extends StatelessWidget {
               ),
               InkWell(
                 onTap: onTap,
-                child: Icon(
+                child: const Icon(
                   Icons.delete,
                   color: kBlack,
                 ),

@@ -1,15 +1,10 @@
-import 'dart:developer';
-
 import 'package:be_active/core/themes/colors.dart';
 import 'package:be_active/providers/home_provider.dart';
 import 'package:be_active/widgets/button/gradient_button.dart';
-import 'package:be_active/widgets/dialogs/acept_dialog.dart';
 import 'package:be_active/widgets/dialogs/add_note_dialog.dart';
 import 'package:be_active/widgets/dialogs/dialogs.dart';
 import 'package:be_active/widgets/note/note_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 class NotesScreen extends StatefulWidget {
@@ -23,8 +18,6 @@ class _NotesScreenState extends State<NotesScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      final homeProvider = Provider.of<HomeProvider>(context, listen: false);
-      homeProvider.getListOfNotes();
     });
     super.initState();
   }
