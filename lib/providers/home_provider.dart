@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:be_active/models/clock_model.dart';
+import 'package:be_active/models/time_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,15 +16,77 @@ class HomeProvider extends ChangeNotifier {
   List<String> listOfNotes = [];
 
   Future<void> getClockList() async {
-    morningClock.addAll(
-      [
-        ClockModel(12, "09:30", "Университет"),
-        ClockModel(12, "02:30", "Cпортзал"),
-        ClockModel(12, "10:35", "Читать книгу")
-      ],
-    );
-
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var morningCLockString = prefs.getStringList("morning_clock") ?? [];
+    var dayCLockString = prefs.getStringList("day_clock") ?? [];
+    var eveningCLockString = prefs.getStringList("evening_clock") ?? [];
+    morningClock = convertStringListToClockModel(morningCLockString);
+    dayClock = convertStringListToClockModel(dayCLockString);
+    eveningClock = convertStringListToClockModel(eveningCLockString);
     notifyListeners();
+  }
+
+  void removeClockFromList({required int index, required TimeEnum timeEnum}) {
+    switch (timeEnum) {
+      case TimeEnum.morning:
+        morningClock.removeAt(index);
+        break;
+      case TimeEnum.day:
+        dayClock.removeAt(index);
+        break;
+      case TimeEnum.nigt:
+        eveningClock.removeAt(index);
+        break;
+    }
+    updateListOfClocks();
+    notifyListeners();
+  }
+
+  void addClockToList({required ClockModel clock, required TimeEnum timeEnum}) {
+    switch (timeEnum) {
+      case TimeEnum.morning:
+        morningClock.add(clock);
+        break;
+
+      case TimeEnum.day:
+        dayClock.add(clock);
+        break;
+      case TimeEnum.nigt:
+        eveningClock.add(clock);
+        break;
+    }
+    updateListOfClocks();
+    notifyListeners();
+  }
+
+  Future<void> updateListOfClocks() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList(
+        "morning_clock", convertClockModelToStrin(morningClock));
+    prefs.setStringList("day_clock", convertClockModelToStrin(dayClock));
+    prefs.setStringList(
+        "evening_clock", convertClockModelToStrin(eveningClock));
+  }
+
+  List<ClockModel> convertStringListToClockModel(List<String> listOfString) {
+    List<ClockModel> newClockList = [];
+    for (var item in listOfString) {
+      newClockList.add(ClockModel.fromString(item));
+    }
+    return newClockList;
+  }
+
+  List<String> convertClockModelToStrin(List<ClockModel> listofClockModel) {
+    List<String> newClockList = [];
+    for (var item in listofClockModel) {
+      newClockList.add(modelToString(item));
+    }
+    return newClockList;
+  }
+
+  String modelToString(ClockModel clockModel) {
+    String clock = jsonEncode(clockModel);
+    return clock;
   }
 
   Future<void> getListOfNotes() async {

@@ -1,6 +1,7 @@
 import 'package:be_active/core/themes/colors.dart';
 import 'package:be_active/providers/home_provider.dart';
 import 'package:be_active/widgets/button/gradient_button.dart';
+import 'package:be_active/widgets/dialogs/acept_dialog.dart';
 import 'package:be_active/widgets/dialogs/add_note_dialog.dart';
 import 'package:be_active/widgets/dialogs/dialogs.dart';
 import 'package:be_active/widgets/note/note_item.dart';
@@ -17,8 +18,7 @@ class NotesScreen extends StatefulWidget {
 class _NotesScreenState extends State<NotesScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
     super.initState();
   }
 
@@ -33,6 +33,7 @@ class _NotesScreenState extends State<NotesScreen> {
           padding: const EdgeInsets.only(
             right: 16,
             left: 16,
+            bottom: 32,
           ),
           child: GradientButton(
             onTap: () async {
@@ -76,8 +77,16 @@ class _NotesScreenState extends State<NotesScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return NoteWidget(
                     note: provider.listOfNotes[index],
-                    onTap: () {
-                      provider.deleteNotes(index);
+                    onTap: () async {
+                      await Dialogs.showUnmodal(
+                        context,
+                        AceptDialog(
+                          title: "Вы точно хотите удалить ?",
+                          onAcept: () async {
+                            provider.deleteNotes(index);
+                          }, infoText: '',
+                        ),
+                      );
                     },
                   );
                 },

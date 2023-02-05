@@ -30,7 +30,7 @@ dependencies:
   easy_mask: ^2.0.1
   flutter_localization: ^0.1.10
   easy_localization: ^3.0.1
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -58,7 +58,7 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   macos: true
-  image_path: "assets/images/app_icon.png"
+  image_path: "assets/images/app_icon.jpg"
   remove_alpha_ios: true
 
 # For information on the generic Dart part of this file, see the

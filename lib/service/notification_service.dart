@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
   static final NotificationService _notificationService =
@@ -31,7 +34,8 @@ class NotificationService {
   }
 
   Future<void> showNotification(
-      int id, String title, String body,  String payload) async {
+      int id, String title, String body, String payload) async {
+    log("show notification showNotification");
     await flutterLocalNotificationsPlugin.show(
       id,
       title,
@@ -42,6 +46,69 @@ class NotificationService {
             importance: Importance.max,
             priority: Priority.max,
             playSound: true,
+            sound: RawResourceAndroidNotificationSound('sound'),
+            icon: '@drawable/icon'),
+        iOS: IOSNotificationDetails(
+          sound: 'default.wav',
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+        ),
+      ),
+    );
+  }
+
+  Future<void> showScheduleNotifications(int id, String title, String body,
+      String payload, Duration duration) async {
+    var createTime =
+        Time(duration.inHours, duration.inMinutes % 60, 0); //at 3.30
+    flutterLocalNotificationsPlugin.zonedSchedule(
+        id,
+        title,
+        body.isNotEmpty ? body : 'Без названия',
+        tz.TZDateTime.from(
+            DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, createTime.hour, createTime.minute),
+            tz.local),
+        const NotificationDetails(
+          android: AndroidNotificationDetails('main_channel', 'Main Channel',
+              channelDescription: 'Main channel notifications',
+              importance: Importance.max,
+              priority: Priority.max,
+              playSound: true,
+              sound: RawResourceAndroidNotificationSound('sound'),
+              icon: '@drawable/icon'),
+          iOS: IOSNotificationDetails(
+            sound: 'default.wav',
+            presentAlert: true,
+            presentBadge: true,
+            presentSound: true,
+          ),
+        ),
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        androidAllowWhileIdle: true,
+        matchDateTimeComponents: DateTimeComponents.time);
+  }
+
+  Future<void> showPeriodicly(int id, String title, String body, String payload,
+      Duration duration) async {
+    var time = Time(duration.inHours, duration.inMinutes % 60, 0); //at 3.30
+    log("time ${time.hour}");
+    log("time ${time.minute}");
+
+    await flutterLocalNotificationsPlugin.showDailyAtTime(
+      id,
+      title,
+      body,
+      time,
+      const NotificationDetails(
+        android: AndroidNotificationDetails('main_channel', 'Main Channel',
+            channelDescription: 'Main channel notifications',
+            importance: Importance.max,
+            priority: Priority.max,
+            playSound: true,
+            sound: RawResourceAndroidNotificationSound('sound'),
             icon: '@drawable/icon'),
         iOS: IOSNotificationDetails(
           sound: 'default.wav',

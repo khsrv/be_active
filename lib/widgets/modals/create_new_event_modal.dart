@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:be_active/core/themes/colors.dart';
 import 'package:be_active/core/themes/text_styles.dart';
+import 'package:be_active/service/notification_service.dart';
 import 'package:be_active/widgets/button/border_button.dart';
 import 'package:be_active/widgets/button/gradient_button.dart';
 import 'package:be_active/widgets/text_fields/custom_text_field.dart';
@@ -10,7 +13,9 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 void showCreateNewEventModal(
     {required BuildContext context,
     required TextEditingController textEditingController,
-    required GlobalKey<FormState> formKey}) {
+    required GlobalKey<FormState> formKey,
+    required Function(Duration duration) onChangeDuration,
+    required Function() onCreateEvent}) {
   showCupertinoModalBottomSheet(
     elevation: 1,
     useRootNavigator: true,
@@ -24,6 +29,7 @@ void showCreateNewEventModal(
           height: 700,
           child: Scaffold(
             backgroundColor: kWhiteColor.withOpacity(0.8),
+            resizeToAvoidBottomInset: false,
             body: Padding(
               padding: const EdgeInsets.only(bottom: 32),
               child: Column(
@@ -83,7 +89,7 @@ void showCreateNewEventModal(
                               style: textStyleSe26We600,
                               textAlign: TextAlign.center,
                             ),
-                             const SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             SizedBox(
@@ -94,7 +100,7 @@ void showCreateNewEventModal(
                                     hours: DateTime.now().hour,
                                     minutes: DateTime.now().minute,
                                   ),
-                                  onTimerDurationChanged: (duration) {},
+                                  onTimerDurationChanged: onChangeDuration,
                                   mode: CupertinoTimerPickerMode.hm,
                                 ),
                               ),
@@ -112,6 +118,7 @@ void showCreateNewEventModal(
                           title: 'Создать напоминане',
                           onTap: () {
                             Navigator.pop(context);
+                            onCreateEvent();
                           },
                         ),
                       ),

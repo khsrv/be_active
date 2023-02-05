@@ -19,32 +19,11 @@ class AceptDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainDialog(
-      title: "",
+      title: title,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 16, bottom: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  infoText,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: kWhiteColor,
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-              ],
-            ),
-          ),
+          SizedBox(height: 16,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

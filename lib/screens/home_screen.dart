@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(
             right: 16,
             left: 16,
+            bottom: 32,
           ),
           child: GradientButton(
             onTap: () {

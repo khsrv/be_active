@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 class ClockWidget extends StatelessWidget {
   const ClockWidget({super.key, required this.clockModel, required this.onTap});
-
   final ClockModel clockModel;
   final Function() onTap;
 
@@ -35,7 +34,7 @@ class ClockWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      clockModel.time,
+                      clockModel.time ?? '',
                       style: const TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.w700,
@@ -55,7 +54,7 @@ class ClockWidget extends StatelessWidget {
                 height: 4,
               ),
               Text(
-                clockModel.name,
+                clockModel.name ?? '',
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,

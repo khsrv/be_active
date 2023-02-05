@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:be_active/core/themes/colors.dart';
 import 'package:be_active/providers/home_provider.dart';
+import 'package:be_active/screens/error_screen.dart';
 import 'package:be_active/screens/home_screen.dart';
 import 'package:be_active/service/notification_service.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +11,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 void main() async {
   await runZonedGuarded(
@@ -15,6 +19,7 @@ void main() async {
       WidgetsFlutterBinding.ensureInitialized();
       await Future.delayed(const Duration(seconds: 2));
       await initialSettings();
+
       runApp(const MyApp());
     },
     (error, stackTrace) {},
@@ -43,14 +48,26 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        home: appRun() ? const HomeScreen() : const ErrorScreen(),
       ),
     );
   }
 }
 
+bool appRun() {
+  DateTime now = DateTime.now();
+  DateTime endTime = DateTime(2023, 2, 11);
+  var day = endTime.difference(now).inDays;
+  log("day ${day}");
+  return day > 0;
+}
+
 Future<void> initialSettings() async {
   NotificationService().initNotification();
+
+  tz.initializeTimeZones();
+  log("DateTime ${DateTime.now().hour}");
+
   AndroidNotificationChannel channel = const AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title

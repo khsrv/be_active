@@ -44,7 +44,7 @@ class MainDialog extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: kWhiteColor
+                      color: kBlack
                     ),
                   ),
                 ),
