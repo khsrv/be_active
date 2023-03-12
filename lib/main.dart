@@ -48,7 +48,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: appRun() ? const HomeScreen() : const ErrorScreen(),
+        home: const HomeScreen(),
+        // home: appRun() ? const HomeScreen() : const ErrorScreen(),
       ),
     );
   }

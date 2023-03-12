@@ -1,4 +1,4 @@
-package com.example.be_active
+package com.beactivetjk
 
 import io.flutter.embedding.android.FlutterActivity
 
